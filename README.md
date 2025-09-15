@@ -1,42 +1,52 @@
-Este repositorio corresponde a los ejercicios correspondiente al Sprint 1 parte 1, dedicado a herencia y poliformismo del curso de Java Presencial. 
-Por el momento solo está implementado, bajo un SRC común, los ejercicios de los niveles 1 y 2, cuyo enunciado mostramos a continuación.
-____________________________________________________________________________________________________________________________________________
-Nivell 1
-- Exercici 1
-En un grup de música hi ha diferents tipus d’instruments musicals. Hi ha instruments de vent, de corda i de percussió.
+# Exercicis de Programació en Java
 
-Tots els instruments tenen com a atributs el seu nom, i el seu preu. A més, tenen un mètode anomenat tocar(). 
-Aquest, és abstracte a la classe instrument i, per tant, s’ha d’implementar a les classes filles. 
-Si s’està tocant un instrument de vent, el mètode ha de mostrar per consola: "Està sonant un instrument de vent", 
-si s’està tocant un instrument de corda: “Està sonant un instrument de corda” 
-i si s’està tocant un instrument de percussió: “Està sonant un instrument de percussió”.
+Aquest repositori conté exercicis pràctics per treballar **excepcions, classes, herència, interfícies i mètodes estàtics** en Java.
 
-El procés de càrrega d'una classe només té lloc una vegada. Demostra que la càrrega pot ser provocada per la creació de la primera instància d'aquesta classe o per l'accés a un membre estàtic d'aquesta. 
+---
 
-Cerca informació sobre els blocs d'inicialització i blocs estàtics en Java.
+## 📌 Nivell 1
 
-- Exercici 2
-Crea una classe "Cotxe" amb els atributs: marca, model i potència.
-La marca ha de ser estàtic final, el model estàtic i la potència final.
-Demostra la diferència entre els tres. N’hi ha algun que es pugui inicialitzar al constructor de la classe?
+### 🔹 Exercici 1 – Productes i Vendes
 
-Afegeix dos mètodes a la classe "Cotxe". Un mètode estàtic anomenat frenar() i un altre no estàtic anomenat accelerar(). 
-El mètode accelerar ha de mostrar per consola: “El vehicle està accelerant” i el mètode frenar() ha de mostrar: “El vehicle està frenant”. 
+Crea les següents classes:
 
-Demostra com invocar el mètode estàtic i el no estàtic des del main() de la classe principal.
-_______________________________________________________
+- **Classe `Producte`**
+  - Atributs: `nom`, `preu`
 
-Nivell 2
+- **Classe `Venda`**
+  - Atributs: col·lecció de `Producte`, `preuTotal`
+  - Mètode `calcularTotal()`:
+    - Si la col·lecció està buida → llença `VendaBuidaException` i mostra:
+      ```
+      Per fer una venda primer has d’afegir productes
+      ```
+    - Si hi ha productes → recorre la col·lecció i guarda la suma dels preus a `preuTotal`.
 
-- Exercici 1
-Crea una classe anomenada "Telèfon" amb els atributs marca i model, i el mètode trucar().
-Aquest mètode ha de rebre un String amb un número de telèfon. El mètode ha de mostrar per consola un missatge dient que s’està trucant al número rebut per paràmetre. 
+- **Classe `VendaBuidaException`**
+  - Filla de `Exception`
+  - Constructor rep el missatge:
+    ```
+    Per fer una venda primer has d’afegir productes
+    ```
+  - Quan capturem l’excepció, mostrem el missatge amb `getMessage()`.
 
-Crea una interfície anomenada "Camera" amb el mètode fotografiar(), i una altra interfície anomenada Rellotge amb el mètode alarma().
+- Escriu codi per **generar i capturar** una excepció de tipus `IndexOutOfBoundsException`.
 
-Crea una classe anomenada "Smartphone" que sigui subclasse de "Telèfon" i que a la vegada implementi les interfícies "Camera" i "Rellotge".
+---
 
-El mètode fotografiar() ha de mostrar per consola: “S’està fent una foto” i el mètode alarma() ha de mostrar: “Està sonant l’alarma”.
+### 🔹 Exercici 2 – Instruments Musicals
 
-Des del main() de l’aplicació, crea un objecte Smartphone i crida als mètodes anteriors.
-____________________________________________________________________
+Hi ha tres tipus d’instruments:
+
+- **Vent**
+- **Corda**
+- **Percussió**
+
+Crea una classe abstracta `Instrument` amb:
+
+- Atributs: `nom`, `preu`
+- Mètode abstracte: `tocar()`
+
+Implementació del mètode `tocar()` en les subclasses:
+
+- Vent → mostra:  
