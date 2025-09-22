@@ -1,52 +1,74 @@
-# Exercicis de Programació en Java
+# Java OOP Practice Exercises
 
-Aquest repositori conté exercicis pràctics per treballar **excepcions, classes, herència, interfícies i mètodes estàtics** en Java.
-
----
-
-## 📌 Nivell 1
-
-### 🔹 Exercici 1 – Productes i Vendes
-
-Crea les següents classes:
-
-- **Classe `Producte`**
-  - Atributs: `nom`, `preu`
-
-- **Classe `Venda`**
-  - Atributs: col·lecció de `Producte`, `preuTotal`
-  - Mètode `calcularTotal()`:
-    - Si la col·lecció està buida → llença `VendaBuidaException` i mostra:
-      ```
-      Per fer una venda primer has d’afegir productes
-      ```
-    - Si hi ha productes → recorre la col·lecció i guarda la suma dels preus a `preuTotal`.
-
-- **Classe `VendaBuidaException`**
-  - Filla de `Exception`
-  - Constructor rep el missatge:
-    ```
-    Per fer una venda primer has d’afegir productes
-    ```
-  - Quan capturem l’excepció, mostrem el missatge amb `getMessage()`.
-
-- Escriu codi per **generar i capturar** una excepció de tipus `IndexOutOfBoundsException`.
+This set of exercises is designed to practice **Object-Oriented Programming concepts in Java**, including abstraction, inheritance, interfaces, static/final attributes, and method implementation.
 
 ---
 
-### 🔹 Exercici 2 – Instruments Musicals
+## Level 1
 
-Hi ha tres tipus d’instruments:
+### Exercise 1: Musical Instruments
+In a music band there are different types of musical instruments: **wind**, **string**, and **percussion**.
 
-- **Vent**
-- **Corda**
-- **Percussió**
+- All instruments must have the attributes:
+  - `name`
+  - `price`
 
-Crea una classe abstracta `Instrument` amb:
+- All instruments must also have a method `play()`:
+  - This method is **abstract** in the `Instrument` class.
+  - It must be implemented in the child classes.
 
-- Atributs: `nom`, `preu`
-- Mètode abstracte: `tocar()`
+The method should print to the console depending on the type of instrument:
+- Wind → `A wind instrument is playing`
+- String → `A string instrument is playing`
+- Percussion → `A percussion instrument is playing`
 
-Implementació del mètode `tocar()` en les subclasses:
+The **class loading process** only happens once.  
+Demonstrate that class loading can be triggered either by:
+1. Creating the first instance of the class.
+2. Accessing one of its static members.
 
-- Vent → mostra:  
+👉 Research **initialization blocks** and **static blocks** in Java.
+
+---
+
+### Exercise 2: Car Class
+Create a class `Car` with the attributes:
+- `brand` → `static final`
+- `model` → `static`
+- `horsepower` → `final`
+
+Tasks:
+1. Demonstrate the difference between the three.
+2. Which of them can be initialized in the constructor?
+
+Add two methods to the `Car` class:
+- **Static method** `brake()` → prints:
+- **Non-static method** `accelerate()` → prints:
+
+From the application’s `main()` method, demonstrate how to invoke both the static and non-static methods.
+
+---
+
+## Level 2
+
+### Exercise 1: Smartphone
+1. Create a class `Phone` with the attributes:
+ - `brand`
+ - `model`
+
+ Add a method `call(String number)` that prints:
+
+2. Create two interfaces:
+- `Camera` → with the method `takePhoto()`
+- `Watch` → with the method `alarm()`
+
+3. Create a class `Smartphone` that:
+- Extends `Phone`
+- Implements both `Camera` and `Watch`
+
+Implement the interface methods:
+- `takePhoto()` → prints:
+- `alarm()` → prints:
+
+4. From the application’s `main()` method, create a `Smartphone` object and call all the methods (`call()`, `takePhoto()`, `alarm()`).
+
